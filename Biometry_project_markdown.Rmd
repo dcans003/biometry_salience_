@@ -1,0 +1,45 @@
+---
+title: "Independent Project Introduction"
+author: "David Canseco"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r}
+# load data
+arthropod_ranch <- read.csv("data/sample_taxa_matrix_by_ranch_WEIGHTED_REL.csv")
+arthropod_trap  <- read.csv("data/sample_taxa_matrix_by_trap_WEIGHTED_REL.csv")
+salience        <- read.csv("data/3_1salience_plants_personal_use.csv")
+```
+
+
+
+### Introduction
+
+Arid and fog-influenced desert systems are characterized by strong climatic variability, where episodic rainfall and La Niña and El Niño Southern Oscillating System (ENSO) dynamics shape the patterns of productivity, species interactions, and long-term ecosystem stability (Ardoin et al., 2022; Grismer, 2002). Rural communities in such systems are increasingly vulnerable to intensifying droughts and extreme weather events associated with climate change (Chambon et al., 2024; Bíró et al., 2014). In Baja California Sur, Mexico, the community of San Juanico lies within a transition zone between desert, coastal lagoon and oasis systems, creating a biologically diverse landscape. Despite documented climatic stress in the region, fine-scale monitoring efforts often rely on short-term or externally driven sampling, leaving gaps in understanding how community-level metrics vary across space and under climatic stress (Danielsen et al., 2009; Reed, 2008).
+
+Arthropods are widely used as ecological indicators because their assemblages shift predictably across environmental gradients and seasonal conditions, allowing measurable changes in abundance and diversity to reflect broader ecological patterns (Doran et al., 2003). The ranches surrounding San Juanico span environmental gradients including elevation and proximity to water sources, providing a structured landscape in which to evaluate spatial variation in arthropod communities. Using malaise trap collections from multiple ranch sites during recent sampling periods, this project quantifies arthropod community metrics, including abundance and alpha diversity, to characterize patterns across the landscape. Establishing these patterns provides a baseline for understanding ecological variability in a fog desert system experiencing increasing climatic stress. As an additional spatial layer, culturally significant plant taxa identified in interviews can be linked to publicly available occurrence records (e.g., GBIF) to visualize broader regional distribution and provide context for patterns observed among ranch sites. 
+
+
+(1) Ardoin, N. M., et al. 2022. Ecosystems & People 18. (2) Bíró, É., et al. 2014. Journal of Nature Conservation 22. (3) Chambon, M., et al. 2024. Environmental Science & Policy 160. (4) Danielsen, F., et al. 2009. Conservation Biology 23. (5) Doran, N. 2003. Organisms Diversity & Evolution 3(2). (6) Grismer, L. L. 2002. University of California Press. (7) Reed, M. S. 2008. Biological Conservation 141(10).
+
+
+### Aim 1:
+Identify culturally relevant plant taxa using salience metrics derived from interview-based free lists to quantify plant knowledge patterns (e.g., richness and salience) and evaluate whether these metrics vary with environmental gradients (proximity to water). I will map the most culturally salient plant taxa using GBIF occurrence to see how their broader regional distribution compares with patterns observed across ranch sites.
+
+### Aim 2:
+Quantify arthropod community metrics from malaise trap data (e.g., abundance, alpha diversity and functional-group composition) across ranch sites and test whether variation among ranches corresponds to the same environmental gradients and plant indicators identified in Aim 1.
+
+### Scope of the project
+
+For this course project, I will focus on ranch-level comparisons using archived interview free-list data, existing environmental descriptors (elevation and proximity to water), and previously collected malaise and metabarcoded datasets. Plant salience metrics will be used to identify culturally relevant taxa, and GBIF occurrence records will serve as spatial reference to contextualize these taxa within the broader region. Analyses will concentrate on testing whether environmental positioning structures both plant communities and arthropods, including bioindicator community metrics. More extensive climate analyses and multi-season comparisons will be developed as part of the broader research project, but are not included in this course analysis. 
+
+
+
+
+
+
+
+
