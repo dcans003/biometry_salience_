@@ -8,6 +8,12 @@ output:
 ---
 
 ```{r}
+library(ggplot2)
+```
+
+
+
+```{r}
 # load data
 arthropod_ranch <- read.csv("data/sample_taxa_matrix_by_ranch_WEIGHTED_REL.csv")
 arthropod_trap  <- read.csv("data/sample_taxa_matrix_by_trap_WEIGHTED_REL.csv")
@@ -77,9 +83,7 @@ data <- read.csv("data/richness_elevation.csv")
 head(data)
 ```
 
-```{r}
-library(ggplot2)
-
+```{r fig1, echo=FALSE, fig.cap="Figure 1. Insect richness across an elevational gradient. Points represent individual traps, colored by ranch, with a fitted linear regression line and 95% confidence interval."}
 ggplot(data, aes(x = Elevation_m, y = Richness, color = Ranch, shape = Ranch)) +
   geom_point(size = 4, alpha = 0.9) +
   geom_smooth(
@@ -101,10 +105,10 @@ ggplot(data, aes(x = Elevation_m, y = Richness, color = Ranch, shape = Ranch)) +
     shape = "Ranch"
   ) +
   scale_color_manual(values = c(
-    "Casas Viejas" = "#2C7BB6", 
-    "El Mesquite"  = "#7B3294", 
-    "El Tule"      = "#D7191C",  
-    "La Venada"    = "#E69F00"   
+    "Casas Viejas" = "#2C7BB6",
+    "El Mesquite"  = "#7B3294",
+    "El Tule"      = "#D7191C",
+    "La Venada"    = "#E69F00"
   )) +
   scale_shape_manual(values = c(
     "Casas Viejas" = 16,
@@ -119,6 +123,9 @@ ggplot(data, aes(x = Elevation_m, y = Richness, color = Ranch, shape = Ranch)) +
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank()
   )
+
+
+
 ```
 
 ```{r}
