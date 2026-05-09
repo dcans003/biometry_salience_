@@ -25,5 +25,18 @@ Arthropods were collected using malaise traps across ranch sites, with two traps
 Plant salience data were generated from interview-based free lists, where participants listed culturally relevant plant species. Salience metrics were calculated based on frequency and order of mention across respondents.
 
 
+
  ## Limitations
 This dataset represents a single sampling period and may not capture temporal variation. Arthropod data are derived from metabarcoding and may still reflect some methodological bias, even after weighting. Aggregation at the ranch level may obscure fine-scale variation in arthropod communities observed between individual traps, even though trap-level data are available. Salience data reflect currently processed interview responses and will be expanded as additional data are incorporated.
+
+
+## Dataset Use in Current Analysis
+
+For the biometry assignment, a simplified subset of the arthropod dataset was used to examine spatial variation in insect richness across an elevational gradient.
+
+Insect richness was calculated at the trap level from the weighted abundance matrix (`sample_taxa_matrix_by_trap_WEIGHTED_REL.csv`) by counting the number of taxa with nonzero abundance values. Elevation values for each trap were obtained using Google Earth based on mapped or approximated trap locations.
+
+The final dataset used for analysis is provided as:
+`data/richness_elevation.csv`
+
+This dataset was used to test whether insect richness varies with elevation using linear regression. Plant salience data were not included in this analysis.
