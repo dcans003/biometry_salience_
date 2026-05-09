@@ -18,28 +18,115 @@ salience        <- read.csv("data/3_1salience_plants_personal_use.csv")
 
 ### Introduction
 
-Arid and fog-influenced desert systems are characterized by strong climatic variability, where episodic rainfall and La Niña and El Niño Southern Oscillating System (ENSO) dynamics shape the patterns of productivity, species interactions, and long-term ecosystem stability (Ardoin et al., 2022; Grismer, 2002). Rural communities in such systems are increasingly vulnerable to intensifying droughts and extreme weather events associated with climate change (Chambon et al., 2024; Bíró et al., 2014). In Baja California Sur, Mexico, the community of San Juanico lies within a transition zone between desert, coastal lagoon and oasis systems, creating a biologically diverse landscape. Despite documented climatic stress in the region, fine-scale monitoring efforts often rely on short-term or externally driven sampling, leaving gaps in understanding how community-level metrics vary across space and under climatic stress (Danielsen et al., 2009; Reed, 2008).
+Arid and fog-influenced desert systems are characterized by strong climatic variability, where episodic rainfall and ENSO (El Niño Southern Oscillation) dynamics shape the patterns of productivity, species interactions, and long-term ecosystem stability (Ardoin et al., 2022; Grismer, 2002). In Baja California Sur, Mexico, the community of San Juanico lies within a transition zone between desert, coastal lagoon and oasis systems, creating a biologically diverse landscape shaped by environmental gradients such as elevation (Stiner et al., 2025). Despite documented climatic stress in the region, fine-scale monitoring efforts often rely on short-term or externally driven sampling, leaving gaps in understanding how community-level metrics vary across space. (Danielsen et al., 2009; Reed, 2008).
 
-Arthropods are widely used as ecological indicators because their assemblages shift predictably across environmental gradients and seasonal conditions, allowing measurable changes in abundance and diversity to reflect broader ecological patterns (Doran et al., 2003). The ranches surrounding San Juanico span environmental gradients including elevation and proximity to water sources, providing a structured landscape in which to evaluate spatial variation in arthropod communities. Using malaise trap collections from multiple ranch sites during recent sampling periods, this project quantifies arthropod community metrics, including abundance and alpha diversity, to characterize patterns across the landscape. Establishing these patterns provides a baseline for understanding ecological variability in a fog desert system experiencing increasing climatic stress. As an additional spatial layer, culturally significant plant taxa identified in interviews can be linked to publicly available occurrence records (e.g., GBIF) to visualize broader regional distribution and provide context for patterns observed among ranch sites. 
+Arthropods are widely used as ecological indicators because their assemblages shift predictably across environmental gradients and seasonal conditions, allowing measurable changes in abundance and diversity to reflect broader ecological patterns (Doran et al., 2003). The ranches surrounding San Juanico span a clear elevational gradient, providing an opportunity to evaluate how insect communities vary across space. Using malaise trap collections from multiple ranch sites, this project quantifies arthropod richness at the trap level and tests whether richness varies along an elevational gradient. Establishing this baseline relationship provides a simple measure of spatial variation in arthropod communities in a desert system experiencing environmental  
 
 
-(1) Ardoin, N. M., et al. 2022. Ecosystems & People 18. (2) Bíró, É., et al. 2014. Journal of Nature Conservation 22. (3) Chambon, M., et al. 2024. Environmental Science & Policy 160. (4) Danielsen, F., et al. 2009. Conservation Biology 23. (5) Doran, N. 2003. Organisms Diversity & Evolution 3(2). (6) Grismer, L. L. 2002. University of California Press. (7) Reed, M. S. 2008. Biological Conservation 141(10).
+(1) Ardoin, N. M., et al. 2022. Ecosystems & People 18. (2)  Journal of Nature Conservation 22. (3) EO Stiner et al. 2025. Thematic Analysis of Climatological Challenges in Baja Sur. (4) Danielsen, F., et al. 2009. Conservation Biology 23. (5) Doran, N. 2003. Organisms Diversity & Evolution 3(2). (6) Grismer, L. L. 2002. University of California Press. (7) Reed, M. S. 2008. Biological Conservation 141(10).
 
+
+### Research Question 
+Does insect richness vary along an elevational gradient across ranches in a San Juanico Baja California system?
+
+### Hypotheses
+**H0:** Insect richness does not vary with elevation. \newline
+**HA:** Insect richenss varies with elevation.
 
 ### Aim 1:
-Identify culturally relevant plant taxa using salience metrics derived from interview-based free lists to quantify plant knowledge patterns (e.g., richness and salience) and evaluate whether these metrics vary with environmental gradients (proximity to water). I will map the most culturally salient plant taxa using GBIF occurrence to see how their broader regional distribution compares with patterns observed across ranch sites.
+Quantify insect richness at the trap level and test whether richness varies along an elevational gradient across ranches using linear regression.
 
-### Aim 2:
-Quantify arthropod community metrics from malaise trap data (e.g., abundance, alpha diversity and functional-group composition) across ranch sites and test whether variation among ranches corresponds to the same environmental gradients and plant indicators identified in Aim 1.
+
 
 ### Scope of the project
 
-For this course project, I will focus on ranch-level comparisons using archived interview free-list data, existing environmental descriptors (elevation and proximity to water), and previously collected malaise and metabarcoded datasets. Plant salience metrics will be used to identify culturally relevant taxa, and GBIF occurrence records will serve as spatial reference to contextualize these taxa within the broader region. Analyses will concentrate on testing whether environmental positioning structures both plant communities and arthropods, including bioindicator community metrics. More extensive climate analyses and multi-season comparisons will be developed as part of the broader research project, but are not included in this course analysis. 
+For this course project, I focus on a simplified analysis of insect community variation across ranch sites in the San Juanico system. Using malaise trap data, iinsect richness was quantified at the trap level and analyzed using a regression analysis in relation to elevation as an environmental gradient. The analysis is limited to testing whether richness varies with elevation using a linear regression approach. 
+
+This is a simplified component of a broader research project that includes additional environmental variables, plant community data, and participatory research elements, which were not included in this assignment. 
+
+### Statistical Approach
+Insect richness was calculated at the trap level by counting the number of taxa with nonzero abundance values from a weighted abundance matrix. Elevation values for each trap were obtained using Google Earth based on mapped trap locations. 
+
+A linear regression was used to test whether or not arthropod richness varies with elevation across traps. Elevation was chosen as the continuous predictor and richess was chosen as the response variable. A scatterplot with a fitted regression line was used to visualize the relationship between elevation and richness. 
 
 
 
+```{r}
+abund <- read.csv("data/sample_taxa_matrix_by_trap_WEIGHTED_REL.csv")
+names(abund)
+```
 
+```{r}
+# select only trap columns
+trap_data <- abund[, c(
+  "Casa_Vieja_TE", "Casa_Vieja_UT",
+  "El_Mezquital_F", "El_Mezquital_H",
+  "El_Tule_BH", "El_Tule_UT",
+  "La_Venada_1", "La_Venada_2"
+)]
 
+# calculate richness (count values > 0 per column)
+richness <- colSums(trap_data > 0)
 
+richness
+```
 
+```{r}
+data <- read.csv("data/richness_elevation.csv")
+
+head(data)
+```
+
+```{r}
+library(ggplot2)
+
+ggplot(data, aes(x = Elevation_m, y = Richness, color = Ranch, shape = Ranch)) +
+  geom_point(size = 4, alpha = 0.9) +
+  geom_smooth(
+    data = data,
+    aes(x = Elevation_m, y = Richness),
+    method = "lm",
+    se = TRUE,
+    fill = "lightblue",
+    color = "black",
+    alpha = 0.3,
+    linewidth = 1,
+    inherit.aes = FALSE
+  ) +
+  labs(
+    title = "Insect Richness Across an Elevational Gradient",
+    x = "Elevation (m)",
+    y = "Insect richness",
+    color = "Ranch",
+    shape = "Ranch"
+  ) +
+  scale_color_manual(values = c(
+    "Casas Viejas" = "#2C7BB6", 
+    "El Mesquite"  = "#7B3294", 
+    "El Tule"      = "#D7191C",  
+    "La Venada"    = "#E69F00"   
+  )) +
+  scale_shape_manual(values = c(
+    "Casas Viejas" = 16,
+    "El Mesquite"  = 17,
+    "El Tule"      = 15,
+    "La Venada"    = 18
+  )) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    legend.position = "right",
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+```
+
+```{r}
+model <- lm(Richness ~ Elevation_m, data = data)
+summary(model)
+```
+
+### Results
+
+Arthopod richness showed a negative relationship with elevation (slope = -0.079); however, this relationship was not statistically significant (p=0.282). Elevation accounted for only a small proportion of the variation in richness R2= 0.19). A slight decreasing trend in richness with increasing elevation was noticed, variability among traps remained high. 
 
