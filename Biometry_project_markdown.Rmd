@@ -3,7 +3,8 @@ title: "Independent Project Introduction"
 author: "David Canseco"
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
+  pdf_document:
+    fig_caption: true
   html_document: default
 ---
 
@@ -83,7 +84,7 @@ data <- read.csv("data/richness_elevation.csv")
 head(data)
 ```
 
-```{r fig1, echo=FALSE, fig.cap="Figure 1. Insect richness across an elevational gradient. Points represent individual traps, colored by ranch, with a fitted linear regression line and 95% confidence interval."}
+```{r fig1, echo=FALSE, fig.cap=" Insect richness across an elevational gradient. Points represent individual traps, colored by ranch, with a fitted linear regression line and 95% confidence interval."}
 ggplot(data, aes(x = Elevation_m, y = Richness, color = Ranch, shape = Ranch)) +
   geom_point(size = 4, alpha = 0.9) +
   geom_smooth(
